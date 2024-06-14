@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const apiKey = 'RGAPI-25fa7072-2323-42f3-9fa5-b8b296c399da'; // Not needed for DDragon endpoints
     const championStatsDiv = document.getElementById('champion-stats');
     const itemStatsDiv = document.getElementById('item-stats');
     const fetchChampionButton = document.getElementById('fetchChampion');
