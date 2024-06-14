@@ -15,7 +15,8 @@
     <div class="main-content">
         <h1>Gold Efficiency</h1>
         <p>Every stat turned into gold value</p>
-        <label for="mySelect">Stat <select id="mySelect" name="mySelect">
+        <label for="mySelect">Stat</label>
+        <select id="mySelect" name="mySelect">
             <option value="AD">Attack Damage</option>
             <option value="AH">Ability Haste</option>
             <option value="AP">Ability Power</option>
@@ -37,11 +38,18 @@
             <option value="MagicPen">Magic Penetration</option>
             <option value="PMagicPen">Percent Magic Penetration</option>
             <option value="HnSPower">Heal and Shield Power</option>
-        </select></label>
+        </select>
         <br>
         <input type="text" id="input1" name="input1" placeholder="Enter some text here">
         <br>
         <input type="text" id="input2" name="input2" placeholder="Enter some other text here">
+        <br>
+        <input type="text" id="championName" placeholder="Enter Champion Name">
+        <button id="fetchChampion">Fetch Champion</button>
+        <br>
+        <div id="champion-stats"></div>
+        <div id="item-stats"></div>
     </div>
+    <script src="scripts.js"></script>
 </body>
 </html>
