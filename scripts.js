@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function fetchChampionStats(championName) {
         try {
-            const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/11.23.1/data/en_US/champion/${championName}.json`);
+            const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/14.12.1/data/en_US/champion/${championName}.json`);
             if (!response.ok) {
                 throw new Error(`Champion ${championName} not found`);
             }
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function fetchItemStats(itemName) {
         try {
-            const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/11.23.1/data/en_US/item.json`);
+            const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/14.12.1/data/en_US/item.json`);
             if (!response.ok) {
                 throw new Error(`Failed to fetch item data`);
             }
@@ -71,7 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let itemDiv = document.createElement('div');
         itemDiv.className = 'item';
         itemDiv.innerHTML = `<h2>${item.name}</h2>
-                             <p>${item.description}</p>`;
+                            <br>
+                            ${item.gold.total} Gold 
+                            <p>${item.description}</p>`;
         itemStatsDiv.appendChild(itemDiv);
     }
 });
