@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gold Efficiency</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <div class="sidebar">
         <div class="sidebar-content">
             <button>Champ</button>
         </div>
     </div>
-    <div class="main-content">
-        <h1>Gold Efficiency</h1>
-        <p>Every stat turned into gold value</p>
-        <label for="mySelect">Stat</label>
-        <select id="mySelect" name="mySelect">
-            <option value="AD">Attack Damage</option>
-            <option value="AH">Ability Haste</option>
-            <option value="AP">Ability Power</option>
-            <option value="Armor">Armor</option>
-            <option value="MR">Magic Resistance</option>
-            <option value="HP">Health</option>
-            <option value="MP">Mana</option>
-            <option value="HPR">Health Regeneration</option>
-            <option value="MPR">Mana Regeneration</option>
-            <option value="CritChance">Critical Strike Chance</option>
-            <option value="CritDamage">Critical Strike Damage</option>
-            <option value="AS">Attack Speed</option>
-            <option value="MS">Flat Movement Speed</option>
-            <option value="PMS">Percent Movement Speed</option>
-            <option value="LifeSteal">Life Steal</option>
-            <option value="OmniV">Omnivamp</option>
-            <option value="ArmorPen">Armor Penetration</option>
-            <option value="Lethality">Lethality</option>
-            <option value="MagicPen">Magic Penetration</option>
-            <option value="PMagicPen">Percent Magic Penetration</option>
-            <option value="HnSPower">Heal and Shield Power</option>
-        </select>
-        <br>
-        <input type="text" id="input1" name="input1" placeholder="Enter some text here">
-        <br>
-        <input type="text" id="input2" name="input2" placeholder="Enter some other text here">
-        <br>
-        <input type="text" id="championName" placeholder="Enter Champion Name">
-        <button id="fetchChampion">Fetch Champion</button>
-        <br>
-        <div id="champion-stats"></div>
-        <br>
-        <input type="text" id="itemName" placeholder="Enter item name">
-        <button id="fetchItem">Fetch Item</button>
-
-        <div id="item-stats"></div>
-
-
+    <div class="main-content flex-container">
+        <div class="flex-item-left">
+            <h1>Gold Efficiency</h1>
+            <p>Every stat turned into gold value</p>
+            <label for="mySelect">Stat</label>
+            <select id="mySelect" name="mySelect">
+                <option value="AD">Attack Damage</option>
+                <option value="AH">Ability Haste</option>
+                <option value="AP">Ability Power</option>
+                <option value="Armor">Armor</option>
+                <option value="MR">Magic Resistance</option>
+                <option value="HP">Health</option>
+                <option value="MP">Mana</option>
+                <option value="HPR">Health Regeneration</option>
+                <option value="MPR">Mana Regeneration</option>
+                <option value="CritChance">Critical Strike Chance</option>
+                <option value="CritDamage">Critical Strike Damage</option>
+                <option value="AS">Attack Speed</option>
+                <option value="MS">Flat Movement Speed</option>
+                <option value="PMS">Percent Movement Speed</option>
+                <option value="LifeSteal">Life Steal</option>
+                <option value="OmniV">Omnivamp</option>
+                <option value="ArmorPen">Armor Penetration</option>
+                <option value="Lethality">Lethality</option>
+                <option value="MagicPen">Magic Penetration</option>
+                <option value="PMagicPen">Percent Magic Penetration</option>
+                <option value="HnSPower">Heal and Shield Power</option>
+            </select>
+            <br>
+            <input type="text" id="input1" name="input1" placeholder="Enter some text here">
+            <br>
+            <input type="text" id="input2" name="input2" placeholder="Enter some other text here">
+            <br>
+            <input type="text" id="championName" placeholder="Enter Champion Name">
+            <button id="fetchChampion">Fetch Champion</button>
+            <br>
+            <div id="champion-stats"></div>
+            <br>
+            <input type="text" id="itemName" placeholder="Enter item name">
+            <button id="fetchItem">Fetch Item</button>
+            <div id="item-stats"></div>
+        </div>
+        <div class="flex-item-center" id="resultC">
+        </div>
+        <div class="flex-item-right" id="resultItems">
+        </div>
     </div>
     <script src="scripts.js"></script>
 </body>
-
 </html>

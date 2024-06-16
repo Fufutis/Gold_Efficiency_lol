@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const championStatsDiv = document.getElementById('champion-stats');
-    const itemStatsDiv = document.getElementById('item-stats');
     const fetchChampionButton = document.getElementById('fetchChampion');
     const championNameInput = document.getElementById('championName');
     const fetchItemButton = document.getElementById('fetchItem');
     const itemNameInput = document.getElementById('itemName');
+    const resultCDiv = document.getElementById('resultC');
+    const resultItemDiv = document.getElementById('resultItems');
 
     fetchChampionButton.addEventListener('click', () => {
         const championName = championNameInput.value.trim();
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await response.json();
             displayChampionStats(data.data[championName]);
         } catch (error) {
-            championStatsDiv.innerHTML = `<p>${error.message}</p>`;
+            resultCDiv.innerHTML = `<p>${error.message}</p>`;
         }
     }
 
@@ -49,12 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             displayItemStats(item);
         } catch (error) {
-            itemStatsDiv.innerHTML = `<p>${error.message}</p>`;
+            resultItemDiv.innerHTML = `<p>${error.message}</p>`;
         }
     }
 
     function displayChampionStats(champion) {
-        championStatsDiv.innerHTML = '';
+        resultCDiv.innerHTML = '';
         let champDiv = document.createElement('div');
         champDiv.className = 'champion';
         champDiv.innerHTML = `<h2>${champion.name}</h2>
@@ -63,17 +63,17 @@ document.addEventListener("DOMContentLoaded", () => {
                               <p>Defense: ${champion.info.defense}</p>
                               <p>Magic: ${champion.info.magic}</p>
                               <p>Difficulty: ${champion.info.difficulty}</p>`;
-        championStatsDiv.appendChild(champDiv);
+        resultCDiv.appendChild(champDiv);
     }
 
     function displayItemStats(item) {
-        itemStatsDiv.innerHTML = '';
+        resultItemDiv.innerHTML = '';
         let itemDiv = document.createElement('div');
         itemDiv.className = 'item';
         itemDiv.innerHTML = `<h2>${item.name}</h2>
                             <br>
                             ${item.gold.total} Gold 
                             <p>${item.description}</p>`;
-        itemStatsDiv.appendChild(itemDiv);
+        resultItemDiv.appendChild(itemDiv);
     }
 });
