@@ -53,6 +53,11 @@
             <input type="text" id="itemName" placeholder="Enter item name">
             <button id="fetchItem">Fetch Item</button>
             <div id="item-stats"></div>
+            <br>
+            <div id="statsDisplay"></div> <!-- Ensure this element is present -->
+            <br>
+            <button id="calculateTotal">Calculate Total</button>
+            <div id="totalValue"></div>
         </div>
         <div class="flex-item-center">
             <div class="flex-item-center-up" id="resultC">A</div>
@@ -63,6 +68,9 @@
             <div class="flex-item-right-down">B</div>
         </div>
     </div>
-    <script src="scripts.js"></script>
+    <!-- Load JavaScript files in this order -->
+    <script type="module" src="stats.js"></script>
+    <script type="module" src="fetchData.js"></script>
+    <script type="module" src="scripts.js"></script>
 </body>
 </html>

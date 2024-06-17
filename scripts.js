@@ -1,4 +1,13 @@
+import { stats, updateStatsDisplay, calculateTotalValue } from './stats.js';
+import { fetchChampionStats, fetchItemStats } from './fetchData.js';
+
 document.addEventListener("DOMContentLoaded", () => {
+    const selectElement = document.getElementById('mySelect');
+    const statValueInput = document.getElementById('statValue');
+    const addStatButton = document.getElementById('addStat');
+    const statsDisplay = document.getElementById('statsDisplay');
+    const calculateTotalButton = document.getElementById('calculateTotal');
+    const totalValueDisplay = document.getElementById('totalValue');
     const fetchChampionButton = document.getElementById('fetchChampion');
     const championNameInput = document.getElementById('championName');
     const fetchItemButton = document.getElementById('fetchItem');
@@ -6,74 +15,48 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultCDiv = document.getElementById('resultC');
     const resultItemDiv = document.getElementById('resultItems');
 
+    console.log('DOM fully loaded and parsed');
+
+    // Check if the element is found
+    if (!statsDisplay) {
+        console.error('Element with ID statsDisplay not found');
+        return;
+    }
+
+    // Initial update of stats display
+    updateStatsDisplay(statsDisplay);
+
+    // Event listener for adding stats
+    addStatButton.addEventListener('click', () => {
+        const selectedStat = selectElement.value;
+        const statValue = parseInt(statValueInput.value);
+        if (!isNaN(statValue)) {
+            stats[selectedStat] = statValue;
+            updateStatsDisplay(statsDisplay);
+        }
+    });
+
+    // Event listener for calculating total value
+    calculateTotalButton.addEventListener('click', () => {
+        const totalValue = calculateTotalValue();
+        totalValueDisplay.innerHTML = `Total Value: ${totalValue}`;
+    });
+
+    // Event listener for fetching champion stats
     fetchChampionButton.addEventListener('click', () => {
         const championName = championNameInput.value.trim();
         if (championName) {
-            fetchChampionStats(championName);
+            console.log(`Fetching stats for champion: ${championName}`);
+            fetchChampionStats(championName, resultCDiv);
         }
     });
 
+    // Event listener for fetching item stats
     fetchItemButton.addEventListener('click', () => {
         const itemName = itemNameInput.value.trim().toLowerCase();
         if (itemName) {
-            fetchItemStats(itemName);
+            console.log(`Fetching stats for item: ${itemName}`);
+            fetchItemStats(itemName, resultItemDiv);
         }
     });
-
-    async function fetchChampionStats(championName) {
-        try {
-            const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/14.12.1/data/en_US/champion/${championName}.json`);
-            if (!response.ok) {
-                throw new Error(`Champion ${championName} not found`);
-            }
-            const data = await response.json();
-            displayChampionStats(data.data[championName]);
-        } catch (error) {
-            resultCDiv.innerHTML = `<p>${error.message}</p>`;
-        }
-    }
-
-    async function fetchItemStats(itemName) {
-        try {
-            const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/14.12.1/data/en_US/item.json`);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch item data`);
-            }
-            const data = await response.json();
-            const items = data.data;
-
-            const item = Object.values(items).find(item => item.name.toLowerCase() === itemName);
-            if (!item) {
-                throw new Error(`Item ${itemName} not found`);
-            }
-
-            displayItemStats(item);
-        } catch (error) {
-            resultItemDiv.innerHTML = `<p>${error.message}</p>`;
-        }
-    }
-
-    function displayChampionStats(champion) {
-        resultCDiv.innerHTML = '';
-        let champDiv = document.createElement('div');
-        champDiv.className = 'champion';
-        champDiv.innerHTML = `<h2>${champion.name}</h2>
-                              <p>${champion.title}</p>
-                              <p>Attack: ${champion.info.attack}</p>
-                              <p>Defense: ${champion.info.defense}</p>
-                              <p>Magic: ${champion.info.magic}</p>
-                              <p>Difficulty: ${champion.info.difficulty}</p>`;
-        resultCDiv.appendChild(champDiv);
-    }
-
-    function displayItemStats(item) {
-        resultItemDiv.innerHTML = '';
-        let itemDiv = document.createElement('div');
-        itemDiv.className = 'item';
-        itemDiv.innerHTML = `<h2>${item.name}</h2>
-                            <br>
-                            ${item.gold.total} Gold 
-                            <p>${item.description}</p>`;
-        resultItemDiv.appendChild(itemDiv);
-    }
 });
