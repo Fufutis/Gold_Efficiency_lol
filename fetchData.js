@@ -53,16 +53,32 @@ document.addEventListener("DOMContentLoaded", () => {//after html is loaded this
         }
     }
 
-    function displayChampionStats(champion) {   //this is the output
+    function displayChampionStats(champion) { //the output
         resultCDiv.innerHTML = '';
         let champDiv = document.createElement('div');
         champDiv.className = 'champion';
         champDiv.innerHTML = `<h2>${champion.name}</h2>
                               <p>${champion.title}</p>
-                              <p>Attack: ${champion.info.attack}</p>
-                              <p>Defense: ${champion.info.defense}</p>
-                              <p>Magic: ${champion.info.magic}</p>
-                              <p>Difficulty: ${champion.info.difficulty}</p>`;
+                              <p>HP: ${champion.stats.hp}</p>
+                              <p>HP per Level: ${champion.stats.hpperlevel}</p>
+                              <p>MP: ${champion.stats.mp}</p>
+                              <p>MP per Level: ${champion.stats.mpperlevel}</p>
+                              <p>Move Speed: ${champion.stats.movespeed}</p>
+                              <p>Armor: ${champion.stats.armor}</p>
+                              <p>Armor per Level: ${champion.stats.armorperlevel}</p>
+                              <p>Spell Block: ${champion.stats.spellblock}</p>
+                              <p>Spell Block per Level: ${champion.stats.spellblockperlevel}</p>
+                              <p>Attack Range: ${champion.stats.attackrange}</p>
+                              <p>HP Regen: ${champion.stats.hpregen}</p>
+                              <p>HP Regen per Level: ${champion.stats.hpregenperlevel}</p>
+                              <p>MP Regen: ${champion.stats.mpregen}</p>
+                              <p>MP Regen per Level: ${champion.stats.mpregenperlevel}</p>
+                              <p>Crit: ${champion.stats.crit}</p>
+                              <p>Crit per Level: ${champion.stats.critperlevel}</p>
+                              <p>Attack Damage: ${champion.stats.attackdamage}</p>
+                              <p>Attack Damage per Level: ${champion.stats.attackdamageperlevel}</p>
+                              <p>Attack Speed per Level: ${champion.stats.attackspeedperlevel}</p>
+                              <p>Attack Speed: ${champion.stats.attackspeed}</p>`;
         resultCDiv.appendChild(champDiv);
     }
 
