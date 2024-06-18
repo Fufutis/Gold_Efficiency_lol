@@ -15,7 +15,8 @@
     <div class="main-content flex-container">
         <div class="flex-item-left">
             <h1>Gold Efficiency</h1>
-            <p>Every stat turned into gold value</p>
+            <bold>Every stat turned into gold value</bold>
+            <br>
             <label for="mySelect">Stat</label>
             <select id="mySelect" name="mySelect">
                 <option value="AD">Attack Damage</option>
@@ -41,17 +42,20 @@
                 <option value="HnSPower">Heal and Shield Power</option>
             </select>
             <br>
-            <input type="text" id="input1" name="input1" placeholder="Enter some text here">
+            <input type="text" id="statInput" name="statValue" placeholder="Enter the stat here">
+            <button id="enterStat">Enter Stat</button>
             <br>
-            <input type="text" id="input2" name="input2" placeholder="Enter some other text here">
+            <br>
+            <div id="totalGold">Total Gold Value: 0</div> <!-- Display initial total gold value -->
+            <br>
             <br>
             <input type="text" id="championName" placeholder="Enter Champion Name">
-            <button id="fetchChampion">Fetch Champion</button>
+            <button id="fetchChampion">Enter Champ</button>
             <br>
             <div id="champion-stats"></div>
             <br>
             <input type="text" id="itemName" placeholder="Enter item name">
-            <button id="fetchItem">Fetch Item</button>
+            <button id="fetchItem">Enter Item</button>
             <div id="item-stats"></div>
         </div>
         <div class="flex-item-center">
@@ -63,6 +67,8 @@
             <div class="flex-item-right-down">B</div>
         </div>
     </div>
-    <script src="scripts.js"></script>
+    <script src="fetchData.js"></script>
+    <script src="stats.js"></script>
+    <script src="gold.js"></script>
 </body>
 </html>

@@ -50,7 +50,7 @@ body {
 .flex-item-left {
     background-color: #f1f1f1;
     padding: 10px;
-    flex: 0 0 20%; /* Adjust this percentage to make the column smaller */
+    flex: 0 0 27%; /* Adjust this percentage to make the column smaller */
 }
 
 .flex-item-center, .flex-item-right {

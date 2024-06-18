@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {//after html is loaded this function is called
     const fetchChampionButton = document.getElementById('fetchChampion');
     const championNameInput = document.getElementById('championName');
     const fetchItemButton = document.getElementById('fetchItem');
@@ -6,21 +6,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultCDiv = document.getElementById('resultC');
     const resultItemDiv = document.getElementById('resultItems');
 
-    fetchChampionButton.addEventListener('click', () => {
+    fetchChampionButton.addEventListener('click', () => {//The BUTTON is clicked
         const championName = championNameInput.value.trim();
         if (championName) {
             fetchChampionStats(championName);
         }
     });
 
-    fetchItemButton.addEventListener('click', () => {
+    fetchItemButton.addEventListener('click', () => {//The BUTTON is clicked
         const itemName = itemNameInput.value.trim().toLowerCase();
         if (itemName) {
             fetchItemStats(itemName);
         }
     });
 
-    async function fetchChampionStats(championName) {
+    async function fetchChampionStats(championName) {//The DATA is preped here
         try {
             const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/14.12.1/data/en_US/champion/${championName}.json`);
             if (!response.ok) {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    async function fetchItemStats(itemName) {
+    async function fetchItemStats(itemName) {//The DATA is preped here
         try {
             const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/14.12.1/data/en_US/item.json`);
             if (!response.ok) {
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function displayChampionStats(champion) {
+    function displayChampionStats(champion) {   //this is the output
         resultCDiv.innerHTML = '';
         let champDiv = document.createElement('div');
         champDiv.className = 'champion';
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resultCDiv.appendChild(champDiv);
     }
 
-    function displayItemStats(item) {
+    function displayItemStats(item) {//this is the output
         resultItemDiv.innerHTML = '';
         let itemDiv = document.createElement('div');
         itemDiv.className = 'item';
