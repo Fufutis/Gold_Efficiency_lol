@@ -1,5 +1,5 @@
 import { stats, updateStatsDisplay, calculateTotalValue } from './stats.js';
-import { fetchChampionStats, fetchItemStats } from './fetchData.js';
+import { fetchChampionStats, fetchItemStats, displayChampionStats, displayItemStats } from './fetchData.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const selectElement = document.getElementById('mySelect');
