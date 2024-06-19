@@ -52,36 +52,60 @@ document.addEventListener("DOMContentLoaded", () => {//after html is loaded this
             resultItemDiv.innerHTML = `<p>${error.message}</p>`;
         }
     }
+const statMapping = {
+    "hp": 2.67,         // HP
+    "mp": 1.25,         // MP
+    "movespeed": 15,    // MS
+    "armor": 18,        // Armor
+    "spellblock": 18,   // MR
+    "attackrange": 0,   // No gold value specified for AttackRange
+    "hpregen": 6,       // HPR
+    "mpregen": 6,       // MPR
+    "crit": 40,         // CritChance
+    "attackdamage": 15, // AD
+    "attackspeed": 25   // AS
+};
 
-    function displayChampionStats(champion) { //the output
-        resultCDiv.innerHTML = '';
-        let champDiv = document.createElement('div');
-        champDiv.className = 'champion';
-        champDiv.innerHTML = `<h2>${champion.name}</h2>
-                              <p>${champion.title}</p>
-                              <p>HP: ${champion.stats.hp}</p>
-                              <p>HP per Level: ${champion.stats.hpperlevel}</p>
-                              <p>MP: ${champion.stats.mp}</p>
-                              <p>MP per Level: ${champion.stats.mpperlevel}</p>
-                              <p>Move Speed: ${champion.stats.movespeed}</p>
-                              <p>Armor: ${champion.stats.armor}</p>
-                              <p>Armor per Level: ${champion.stats.armorperlevel}</p>
-                              <p>Spell Block: ${champion.stats.spellblock}</p>
-                              <p>Spell Block per Level: ${champion.stats.spellblockperlevel}</p>
-                              <p>Attack Range: ${champion.stats.attackrange}</p>
-                              <p>HP Regen: ${champion.stats.hpregen}</p>
-                              <p>HP Regen per Level: ${champion.stats.hpregenperlevel}</p>
-                              <p>MP Regen: ${champion.stats.mpregen}</p>
-                              <p>MP Regen per Level: ${champion.stats.mpregenperlevel}</p>
-                              <p>Crit: ${champion.stats.crit}</p>
-                              <p>Crit per Level: ${champion.stats.critperlevel}</p>
-                              <p>Attack Damage: ${champion.stats.attackdamage}</p>
-                              <p>Attack Damage per Level: ${champion.stats.attackdamageperlevel}</p>
-                              <p>Attack Speed per Level: ${champion.stats.attackspeedperlevel}</p>
-                              <p>Attack Speed: ${champion.stats.attackspeed}</p>`;
-        resultCDiv.appendChild(champDiv);
+function displayChampionStats(champion) { 
+    const stats = champion.stats;
+    let totalGoldValue = 0;
+
+    for (const [stat, value] of Object.entries(stats)) {
+        if (statMapping.hasOwnProperty(stat)) {
+            totalGoldValue += value * statMapping[stat];
+        }
     }
 
+    resultCDiv.innerHTML = '';
+    let champDiv = document.createElement('div');
+    champDiv.className = 'champion';
+    champDiv.innerHTML = `<h2>${champion.name}</h2>
+                          <p>${champion.title}</p>
+                          HP: ${stats.hp}<br>
+                          HP per Level: ${stats.hpperlevel}<br>
+                          MP: ${stats.mp}<br>
+                          MP per Level: ${stats.mpperlevel}<br>
+                          Move Speed: ${stats.movespeed}<br>
+                          Armor: ${stats.armor}<br>
+                          Armor per Level: ${stats.armorperlevel}<br>
+                          Spell Block: ${stats.spellblock}<br>
+                          Spell Block per Level: ${stats.spellblockperlevel}<br>
+                          Attack Range: ${stats.attackrange}<br>
+                          HP Regen: ${stats.hpregen}<br>
+                          HP Regen per Level: ${stats.hpregenperlevel}<br>
+                          MP Regen: ${stats.mpregen}<br>
+                          MP Regen per Level: ${stats.mpregenperlevel}<br>
+                          Crit: ${stats.crit}<br>
+                          Crit per Level: ${stats.critperlevel}<br>
+                          Attack Damage: ${stats.attackdamage}<br>
+                          Attack Damage per Level: ${stats.attackdamageperlevel}<br>
+                          Attack Speed per Level: ${stats.attackspeedperlevel}<br>
+                          Attack Speed: ${stats.attackspeed}<br>
+                          <br>
+                          Total Gold Value Level 1: ${totalGoldValue}`;
+
+    resultCDiv.appendChild(champDiv);
+}
     function displayItemStats(item) {//this is the output
         resultItemDiv.innerHTML = '';
         let itemDiv = document.createElement('div');
