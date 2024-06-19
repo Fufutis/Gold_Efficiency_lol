@@ -68,13 +68,25 @@ const statMapping = {
 
 function displayChampionStats(champion) { 
     const stats = champion.stats;
-    let totalGoldValue = 0;
+    let totalGoldValueWithMSAndMP = 0;
+    let totalGoldValueWithoutMS = 0;
+    let totalGoldValueWithoutMSAndMP = 0;
 
     for (const [stat, value] of Object.entries(stats)) {
         if (statMapping.hasOwnProperty(stat)) {
-            totalGoldValue += value * statMapping[stat];
+            totalGoldValueWithMSAndMP += value * statMapping[stat];
+            if (stat !== "movespeed") {
+                totalGoldValueWithoutMS += value * statMapping[stat];
+            }
+            if (stat !== "movespeed" && stat !== "mp" && stat !== "mpregen") {
+                totalGoldValueWithoutMSAndMP += value * statMapping[stat];
+            }
         }
     }
+    // Format the gold values to one decimal place
+    totalGoldValueWithMSAndMP = totalGoldValueWithMSAndMP.toFixed(1);
+    totalGoldValueWithoutMS = totalGoldValueWithoutMS.toFixed(1);
+    totalGoldValueWithoutMSAndMP = totalGoldValueWithoutMSAndMP.toFixed(1);
 
     resultCDiv.innerHTML = '';
     let champDiv = document.createElement('div');
@@ -102,7 +114,9 @@ function displayChampionStats(champion) {
                           Attack Speed per Level: ${stats.attackspeedperlevel}<br>
                           Attack Speed: ${stats.attackspeed}<br>
                           <br>
-                          Total Gold Value Level 1: ${totalGoldValue}`;
+                          Total Gold Value Level 1 : ${totalGoldValueWithMSAndMP}<br>
+                          Total Gold Value Level 1 (without MS): ${totalGoldValueWithoutMS}<br>
+                          Total Gold Value Level 1 (without MS and MP): ${totalGoldValueWithoutMSAndMP}`;
 
     resultCDiv.appendChild(champDiv);
 }
