@@ -9,7 +9,7 @@
 <body>
     <div class="sidebar">
         <div class="sidebar-content">
-            <button>Champ</button>
+            <button class="black">Champ</button>
         </div>
     </div>
     <div class="main-content flex-container">
@@ -18,7 +18,7 @@
             <bold>Every stat turned into gold value</bold>
             <br>
             <label for="mySelect">Stat</label>
-            <select id="mySelect" name="mySelect">
+            <select id="mySelect" name="mySelect" class="black">
                 <option value="AD">Attack Damage</option>
                 <option value="AH">Ability Haste</option>
                 <option value="AP">Ability Power</option>
@@ -43,27 +43,27 @@
             </select>
             <br>
             <input type="text" id="statInput" name="statValue" placeholder="Enter the stat here">
-            <button id="enterStat">Enter Stat</button>
+            <button id="enterStat" class="black">Enter Stat</button>
             <br>
             <br>
             <div id="totalGold">Total Gold Value: 0</div> <!-- Display initial total gold value -->
             <br>
             <br>
             <input type="text" id="championName" placeholder="Enter Champion Name">
-            <button id="fetchChampion">Enter Champ</button>
+            <button id="fetchChampion" class="black">Enter Champ</button>
             <br>
             <div id="champion-stats"></div>
             <br>
             <input type="text" id="itemName" placeholder="Enter item name">
-            <button id="fetchItem">Enter Item</button>
+            <button id="fetchItem" class="black">Enter Item</button>
             <div id="item-stats"></div>
         </div>
         <div class="flex-item-center">
             <div class="flex-item-center-up" id="resultC">A</div>
-            <div class="flex-item-center-down" id="resultItems">B</div>
+            <div class="flex-item-center-down">B</div>
         </div>
         <div class="flex-item-right">
-            <div class="flex-item-right-up">A</div><!--Ability value -->
+            <div class="flex-item-right-up" id="resultItems">A</div><!--Ability value -->
             <div class="flex-item-right-down">B</div><!--Ability scaling with the given stats -->
         </div>
     </div>

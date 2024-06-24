@@ -4,6 +4,13 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
     color: #ccc;
+    font-size: 18px;
+}
+h1{
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
+
 }
 
 body {
@@ -51,7 +58,7 @@ body {
 .flex-item-left {
     background-color: #1f1f1f;
     padding: 10px;
-    flex: 0 0 27%; /* Adjust this percentage to make the column smaller */
+    flex: 0 0 30%; /* Adjust this percentage to make the column smaller */
 }
 
 .flex-item-center, .flex-item-right {
@@ -93,7 +100,7 @@ body {
     align-items: flex-start; /* Align items to the top */
     justify-content: center;
     padding: 20px;
-    transition: margin-left 0.3s;
+    transition: margin-left 0.1s;
 }
 
 h1 {
@@ -109,4 +116,48 @@ select, input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.black {
+    color: black; /* Text color */
+    background-color: #ff6666; /* Light red button color */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Add padding */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.2s; /* Add transition for background color change */
+}
+
+.black:hover {
+    background-color: #ffffff; /* Darker shade of light red on hover */
+}
+
+/* Styles for select element with class black */
+select.black {
+    width: 50%; /* Adjust the width to make it smaller */
+    height: 2%; /* Set the height to be scalable */
+    padding: 0.5em; /* Adjust the padding */
+    font-size: 1em; /* Adjust the font size */
+    font-weight: bold; /* Adjust the font weight */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    background-color: #ff6666; /* Light red background color */
+    color: black; /* Black text color */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Change the color of the options text */
+select.black option {
+    color: rgb(255, 255, 255); /* White text color for options */
+    background-color: #ff4d4d; /* Dark red background for options */
+}
+
+/* Optional: Hover effect */
+select.black:hover {
+    background-color: #ffffff; /* Darker shade of light red on hover */
+}
+
+/* Optional: Style for the options when hovered */
+select.black option:hover {
+    background-color: #ff4d4d; /* Darker shade of light red on hover */
 }

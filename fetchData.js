@@ -91,7 +91,7 @@ function displayChampionStats(champion) {
     resultCDiv.innerHTML = '';
     let champDiv = document.createElement('div');
     champDiv.className = 'champion';
-    champDiv.innerHTML = `<h2>${champion.name}</h2>
+    champDiv.innerHTML = `<h1>${champion.name}</h1>
                           <p>${champion.title}</p>
                           HP: ${stats.hp}<br>
                           HP per Level: ${stats.hpperlevel}<br>
@@ -124,7 +124,7 @@ function displayChampionStats(champion) {
         resultItemDiv.innerHTML = '';
         let itemDiv = document.createElement('div');
         itemDiv.className = 'item';
-        itemDiv.innerHTML = `<h2>${item.name}</h2>
+        itemDiv.innerHTML = `<h1>${item.name}</h1>
                             <br>
                             ${item.gold.total} Gold 
                             <p>${item.description}</p>`;
