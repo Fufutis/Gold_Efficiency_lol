@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    color: #ccc;
 }
 
 body {
@@ -13,7 +14,7 @@ body {
 
 .sidebar {
     width: 60px;
-    background-color: #333;
+    background-color: #242130;
     color: #fff;
     transition: width 0.3s;
     display: flex;
@@ -48,7 +49,7 @@ body {
 }
 
 .flex-item-left {
-    background-color: #f1f1f1;
+    background-color: #1f1f1f;
     padding: 10px;
     flex: 0 0 27%; /* Adjust this percentage to make the column smaller */
 }
@@ -67,20 +68,16 @@ body {
 }
 
 .flex-item-center-up {
-    background-color: lightcoral;
-}
+    background-color: #1f1f1f;}
 
 .flex-item-center-down {
-    background-color: lightgoldenrodyellow;
-}
+    background-color: #1f1f1f;}
 
 .flex-item-right-up {
-    background-color: lightgreen;
-}
+    background-color: #1f1f1f;}
 
 .flex-item-right-down {
-    background-color: lightblue;
-}
+    background-color: #1f1f1f;}
 
 /* Responsive layout - makes a one column-layout instead of two-column layout */
 @media (max-width: 800px) {
@@ -91,7 +88,7 @@ body {
 
 .main-content {
     flex: 1;
-    background-color: #f4f4f4;
+    background-color: #1f1f1f;
     display: flex;
     align-items: flex-start; /* Align items to the top */
     justify-content: center;

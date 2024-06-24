@@ -54,17 +54,17 @@ document.addEventListener("DOMContentLoaded", () => {//after html is loaded this
     }
 const statMapping = {
     "hp": 2.67,         // HP
-    "mp": 1.25,         // MP
-    "movespeed": 15,    // MS
-    "armor": 18,        // Armor
+    "mp": 1.4,         // MP
+    "movespeed": 12,    // MS
+    "armor": 20,        // Armor
     "spellblock": 18,   // MR
     "attackrange": 0,   // No gold value specified for AttackRange
-    "hpregen": 6,       // HPR
-    "mpregen": 6,       // MPR
+    "hpregen": 3,       // HPR
+    "mpregen": 5,       // MPR
     "crit": 40,         // CritChance
-    "attackdamage": 15, // AD
-    "attackspeed": 25   // AS
-};
+    "attackdamage": 35, // AD
+    "attackspeed": 30   // AS
+};//lack of ap bcs no champ has any
 
 function displayChampionStats(champion) { 
     const stats = champion.stats;
@@ -131,3 +131,4 @@ function displayChampionStats(champion) {
         resultItemDiv.appendChild(itemDiv);
     }
 });
+//lack of internet connection or the api shutting down you will receive failed to fetch as a responce
