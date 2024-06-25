@@ -8,8 +8,7 @@
 /* SCROLL WHEEL SECTION --------------------------------------------- */
 /* Hide scrollbar by default for WebKit browsers (Chrome, Safari) */
 .main-content::-webkit-scrollbar {
-    width: 0; /* Remove scrollbar space */
-    background: transparent; /* Optional: just to make sure */
+    display: none; /* Hide the default scrollbar */
 }
 
 /* Custom scrollbar overlay */
@@ -19,28 +18,22 @@
     -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer 10+ */
 }
 
-/* Custom scrollbar overlay */
-.main-content::before {
-    content: '';
-    opacity: 0; /* Start hidden */
-    position: absolute;
-    top: 0;
-    right: 0;
+/* Style for the custom scrollbar */
+.custom-scrollbar {
+    position: fixed;
+    right: 10px; /* Adjust as necessary */
     width: 0.2em;
-    height: 2em; /* Full height */
-    background: linear-gradient(to bottom, #ff4d4d, #f35050); /* Custom scrollbar style */
-    border-radius: 3em; /* Rounded corners */
-    transition: opacity 0.3s, top 0.3s, height 0.3s; /* Fade in/out transition and smooth scrolling */
+    background: linear-gradient(to bottom, #ff4d4d, #f35050);
+    border-radius: 100vw;
+    opacity: 0;
+    transition: opacity 0.3s; /* Fade in/out transition and smooth scrolling */
+    z-index: 10;
 }
 
-.main-content.scroll-visible::before {
-    opacity: 1; /* Show the custom scrollbar */
-}
-
-/* Additional hover effect for the custom scrollbar */
-.main-content.scroll-visible::before:hover {
+.custom-scrollbar:hover {
     background: #ff4d4d;
 }
+
 /* SCROLL WHEEL SECTION --------------------------------------------- */
 h1{
     color: #fff;
