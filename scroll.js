@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.body.appendChild(scrollbar);
 
     let isScrolling;
+    const scrollbarPadding = 10; // Padding from top and bottom in pixels
 
     mainContent.addEventListener('scroll', () => {
         scrollbar.style.opacity = '1'; // Show the custom scrollbar
@@ -23,9 +24,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const contentHeight = mainContent.scrollHeight;
         const visibleHeight = mainContent.clientHeight;
         const scrollRatio = visibleHeight / contentHeight;
-        const scrollbarHeight = visibleHeight * scrollRatio;
+        const scrollbarHeight = (visibleHeight * scrollRatio * 0.5) - (2 * scrollbarPadding); // Adjust for padding
         const scrollTop = mainContent.scrollTop;
-        const scrollbarTop = scrollTop * scrollRatio; // Normal scrolling
+        const scrollbarTop = scrollTop * (visibleHeight - scrollbarHeight - (2 * scrollbarPadding)) / (contentHeight - visibleHeight) + scrollbarPadding;
 
         // Update the custom scrollbar's position and height
         scrollbar.style.height = `${scrollbarHeight}px`;

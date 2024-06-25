@@ -26,13 +26,14 @@
     background: linear-gradient(to bottom, #ff4d4d, #f35050);
     border-radius: 100vw;
     opacity: 0;
-    transition: opacity 0.3s; /* Fade in/out transition and smooth scrolling */
+    transition: opacity 0.3s, top 0.1s; /* Fade in/out transition and smooth scrolling */
     z-index: 10;
 }
 
 .custom-scrollbar:hover {
     background: #ff4d4d;
 }
+
 
 /* SCROLL WHEEL SECTION --------------------------------------------- */
 h1{
