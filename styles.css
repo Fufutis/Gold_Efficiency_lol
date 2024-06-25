@@ -5,6 +5,7 @@
     font-family: Arial, sans-serif;
     color: #ccc;
 }
+
 /* SCROLL WHEEL SECTION --------------------------------------------- */
 /* Hide scrollbar by default for WebKit browsers (Chrome, Safari) */
 .main-content::-webkit-scrollbar {
@@ -33,16 +34,13 @@
 .custom-scrollbar:hover {
     background: #ff4d4d;
 }
-
-
 /* SCROLL WHEEL SECTION --------------------------------------------- */
-h1{
+
+h1 {
     color: #fff;
     font-size: 20px;
     margin-bottom: 20px;
-
 }
-
 
 body {
     display: flex;
@@ -108,16 +106,20 @@ body {
 }
 
 .flex-item-center-up {
-    background-color: #1f1f1f;}
+    background-color: #1f1f1f;
+}
 
 .flex-item-center-down {
-    background-color: #1f1f1f;}
+    background-color: #1f1f1f;
+}
 
 .flex-item-right-up {
-    background-color: #1f1f1f;}
+    background-color: #1f1f1f;
+}
 
 .flex-item-right-down {
-    background-color: #1f1f1f;}
+    background-color: #1f1f1f;
+}
 
 /* Responsive layout - makes a one column-layout instead of two-column layout */
 @media (max-width: 800px) {
@@ -196,7 +198,30 @@ select.black option:hover {
     background-color: #ff4d4d; /* Darker shade of light red on hover */
 }
 
-.statinput{
+/* Custom scrollbar for WebKit browsers */
+select.black::-webkit-scrollbar {
+    width: 8px;
+}
+
+select.black::-webkit-scrollbar-track {
+    background: #ff4d4d; /* Background of the scrollbar track */
+}
+
+select.black::-webkit-scrollbar-thumb {
+    background: #ff4040; /* Color of the scrollbar thumb */
+
+}
+
+select.black::-webkit-scrollbar-thumb:hover {
+    background: #1f1f1f; /* Color of the scrollbar thumb on hover */
+}
+
+/* Custom scrollbar for Firefox */
+select.black {
+    scrollbar-width: none;
+}
+
+.statinput {
     width: 38%;
     padding: 0.5em;
     font-size: 14px;
@@ -207,28 +232,30 @@ select.black option:hover {
     color: black;
     cursor: pointer;
 }
-.champbutton{
-width: 27.5%;
-padding: 10px 5px;
-}
 
-.champinput{
-    width: 38%;
-    padding: 0.5em;
-    font-size: 14px;
-    font-weight: bold;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #acada4;
-    color: black;
-    cursor: pointer;
-}
-
-.itembutton{
+.champbutton {
     width: 27.5%;
     padding: 10px 5px;
 }
-.iteminput{
+
+.champinput {
+    width: 38%;
+    padding: 0.5em;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #acada4;
+    color: black;
+    cursor: pointer;
+}
+
+.itembutton {
+    width: 27.5%;
+    padding: 10px 5px;
+}
+
+.iteminput {
     width: 38%;
     padding: 0.5em;
     font-size: 14px;
