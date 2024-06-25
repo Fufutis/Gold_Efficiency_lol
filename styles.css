@@ -4,14 +4,14 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
     color: #ccc;
-    font-size: 18px;
 }
 h1{
     color: #fff;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 20px;
 
 }
+
 
 body {
     display: flex;
@@ -134,10 +134,10 @@ select, input {
 
 /* Styles for select element with class black */
 select.black {
-    width: 50%; /* Adjust the width to make it smaller */
+    width: 57%; /* Adjust the width to make it smaller */
     height: 2%; /* Set the height to be scalable */
     padding: 0.5em; /* Adjust the padding */
-    font-size: 1em; /* Adjust the font size */
+    font-size: 13px; /* Adjust the font size */
     font-weight: bold; /* Adjust the font weight */
     border: 1px solid #ccc; /* Add a border */
     border-radius: 4px; /* Add border radius for rounded corners */
@@ -160,4 +160,48 @@ select.black:hover {
 /* Optional: Style for the options when hovered */
 select.black option:hover {
     background-color: #ff4d4d; /* Darker shade of light red on hover */
+}
+
+.statinput{
+    width: 38%;
+    padding: 0.5em;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #acada4;
+    color: black;
+    cursor: pointer;
+}
+.champbutton{
+width: 27.5%;
+padding: 10px 5px;
+}
+
+.champinput{
+    width: 38%;
+    padding: 0.5em;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #acada4;
+    color: black;
+    cursor: pointer;
+}
+
+.itembutton{
+    width: 27.5%;
+    padding: 10px 5px;
+}
+.iteminput{
+    width: 38%;
+    padding: 0.5em;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #acada4;
+    color: black;
+    cursor: pointer;
 }
