@@ -5,6 +5,43 @@
     font-family: Arial, sans-serif;
     color: #ccc;
 }
+/* SCROLL WHEEL SECTION --------------------------------------------- */
+/* Hide scrollbar by default for WebKit browsers (Chrome, Safari) */
+.main-content::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just to make sure */
+}
+
+/* Custom scrollbar overlay */
+.main-content {
+    position: relative; /* Ensure custom scrollbar overlay is positioned correctly */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer 10+ */
+}
+
+/* Custom scrollbar overlay */
+.main-content::before {
+    content: '';
+    opacity: 0; /* Start hidden */
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0.2em;
+    height: 2em; /* Full height */
+    background: linear-gradient(to bottom, #ff4d4d, #f35050); /* Custom scrollbar style */
+    border-radius: 3em; /* Rounded corners */
+    transition: opacity 0.3s, top 0.3s, height 0.3s; /* Fade in/out transition and smooth scrolling */
+}
+
+.main-content.scroll-visible::before {
+    opacity: 1; /* Show the custom scrollbar */
+}
+
+/* Additional hover effect for the custom scrollbar */
+.main-content.scroll-visible::before:hover {
+    background: #ff4d4d;
+}
+/* SCROLL WHEEL SECTION --------------------------------------------- */
 h1{
     color: #fff;
     font-size: 20px;
@@ -53,12 +90,14 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
+    overflow: hidden; /* Ensure the flex container does not scroll */
 }
 
 .flex-item-left {
     background-color: #1f1f1f;
     padding: 10px;
     flex: 0 0 30%; /* Adjust this percentage to make the column smaller */
+    overflow-y: auto; /* Enable scrolling for the left column */
 }
 
 .flex-item-center, .flex-item-right {
@@ -101,6 +140,7 @@ body {
     justify-content: center;
     padding: 20px;
     transition: margin-left 0.1s;
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 h1 {
