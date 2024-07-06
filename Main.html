@@ -56,6 +56,7 @@
             <br>
             <input type="text" id="itemName" class="iteminput" placeholder="Item Name">
             <button id="fetchItem" class="black itembutton">Enter Item</button>
+            <button id="showItemStats" class="black itembutton">Extra</button>
             <div id="item-stats"></div>
         </div>
         <div class="flex-item-center">
@@ -64,7 +65,9 @@
         </div>
         <div class="flex-item-right">
             <div class="flex-item-right-up" id="resultItems">A</div><!--Ability value -->
-            <div class="flex-item-right-down">B</div><!--Ability scaling with the given stats -->
+            <div class="flex-item-right-down">
+                <div id="itemStatsDisplay"></div>
+            </div><!--Ability scaling with the given stats -->
         </div>
     </div>
     <script src="scroll.js"></script>

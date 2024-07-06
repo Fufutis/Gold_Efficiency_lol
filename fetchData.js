@@ -3,8 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const championNameInput = document.getElementById('championName');
     const fetchItemButton = document.getElementById('fetchItem');
     const itemNameInput = document.getElementById('itemName');
+    const showItemStatsButton = document.getElementById('showItemStats');
     const resultCDiv = document.getElementById('resultC');
     const resultItemDiv = document.getElementById('resultItems');
+    const itemStatsDisplay = document.getElementById('itemStatsDisplay');
+    let currentItem = null;
+    let isDetailedViewVisible = false;
 
     fetchChampionButton.addEventListener('click', () => {
         const championName = championNameInput.value.trim();
@@ -17,6 +21,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const itemName = itemNameInput.value.trim().toLowerCase();
         if (itemName) {
             fetchItemStats(itemName);
+        }
+    });
+
+    showItemStatsButton.addEventListener('click', () => {
+        if (currentItem) {
+            if (isDetailedViewVisible) {
+                itemStatsDisplay.innerHTML = ''; // Clear the display
+            } else {
+                displayDetailedItemStats(currentItem);
+            }
+            isDetailedViewVisible = !isDetailedViewVisible; // Toggle the visibility state
         }
     });
 
@@ -47,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error(`Item ${itemName} not found`);
             }
 
+            currentItem = item;
             displayItemStats(item);
         } catch (error) {
             resultItemDiv.innerHTML = `<p>${error.message}</p>`;
@@ -152,21 +168,28 @@ document.addEventListener("DOMContentLoaded", () => {
         itemDiv.className = 'item';
         itemDiv.innerHTML = `<h1>${item.name}</h1>
                             <p>${item.plaintext || 'No plain text available'}</p>
-                            <p>${item.description || 'No description available'}</p>
-                            <p>Colloquial: ${item.colloq || 'N/A'}</p>
-                            <p>Builds into: ${item.into ? item.into.join(', ') : 'N/A'}</p>
-                            <p>Image: ${item.image ? `<img src="https://ddragon.leagueoflegends.com/cdn/14.12.1/img/item/${item.image.full}" alt="${item.name}">` : 'No image available'}</p>
-                            <p>Gold: Base - ${item.gold.base}, Total - ${item.gold.total}, Sell - ${item.gold.sell}</p>
-                            <p>Tags: ${item.tags ? item.tags.join(', ') : 'N/A'}</p>
-                            
-                            <p>Stats: ${item.stats ? Object.entries(item.stats).map(([key, value]) => `${key}: ${value}`).join(', ') : 'N/A'}</p>
-                            <p>Effects: ${item.effect ? Object.entries(item.effect).map(([key, value]) => `${key}: ${value}`).join(', ') : 'N/A'}</p>
-                            `
-                            //<p>Maps: ${item.maps ? Object.keys(item.maps).filter(key => item.maps[key]).join(', ') : 'N/A'}</p>
-                            //<p>In Store: ${item.inStore ? 'Yes' : 'No'}</p>
-                            //<p>Depth: ${item.depth || 'N/A'}</p>
-                            //<p>Stacks: ${item.stacks || 'N/A'}</p>;
-
+                            <p>${item.description || 'No description available'}</p>`;
         resultItemDiv.appendChild(itemDiv);
+    }
+
+    function displayDetailedItemStats(item) {
+        itemStatsDisplay.innerHTML = '';
+        let detailedItemDiv = document.createElement('div');
+        detailedItemDiv.className = 'detailed-item';
+        detailedItemDiv.innerHTML = `<h1>${item.name}</h1>
+                                    <p>${item.plaintext || 'No plain text available'}</p>
+                                    <p>${item.description || 'No description available'}</p>
+                                    <p>Colloquial: ${item.colloq || 'N/A'}</p>
+                                    <p>Builds into: ${item.into ? item.into.join(', ') : 'N/A'}</p>
+                                    <p>Image: ${item.image ? `<img src="https://ddragon.leagueoflegends.com/cdn/14.12.1/img/item/${item.image.full}" alt="${item.name}">` : 'No image available'}</p>
+                                    <p>Gold: Base - ${item.gold.base}, Total - ${item.gold.total}, Sell - ${item.gold.sell}</p>
+                                    <p>Tags: ${item.tags ? item.tags.join(', ') : 'N/A'}</p>
+                                    <p>Maps: ${item.maps ? Object.keys(item.maps).filter(key => item.maps[key]).join(', ') : 'N/A'}</p>
+                                    <p>Stats: ${item.stats ? Object.entries(item.stats).map(([key, value]) => `${key}: ${value}`).join(', ') : 'N/A'}</p>
+                                    <p>Effects: ${item.effect ? Object.entries(item.effect).map(([key, value]) => `${key}: ${value}`).join(', ') : 'N/A'}</p>
+                                    <p>In Store: ${item.inStore ? 'Yes' : 'No'}</p>
+                                    <p>Depth: ${item.depth || 'N/A'}</p>
+                                    <p>Stacks: ${item.stacks || 'N/A'}</p>`;
+        itemStatsDisplay.appendChild(detailedItemDiv);
     }
 });
