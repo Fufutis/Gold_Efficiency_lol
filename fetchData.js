@@ -63,6 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             currentItem = item;
+            isDetailedViewVisible = false; // Reset detailed view visibility
+            itemStatsDisplay.innerHTML = ''; // Clear detailed view
             displayItemStats(item);
         } catch (error) {
             resultItemDiv.innerHTML = `<p>${error.message}</p>`;
@@ -176,9 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
         itemStatsDisplay.innerHTML = '';
         let detailedItemDiv = document.createElement('div');
         detailedItemDiv.className = 'detailed-item';
-        detailedItemDiv.innerHTML = `<h1>${item.name}</h1>
-                                    <p>${item.plaintext || 'No plain text available'}</p>
-                                    <p>${item.description || 'No description available'}</p>
+        detailedItemDiv.innerHTML = `<p>------------------------------</p>
                                     <p>Colloquial: ${item.colloq || 'N/A'}</p>
                                     <p>Builds into: ${item.into ? item.into.join(', ') : 'N/A'}</p>
                                     <p>Image: ${item.image ? `<img src="https://ddragon.leagueoflegends.com/cdn/14.12.1/img/item/${item.image.full}" alt="${item.name}">` : 'No image available'}</p>
