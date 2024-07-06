@@ -4,11 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const fetchItemButton = document.getElementById('fetchItem');
     const itemNameInput = document.getElementById('itemName');
     const showItemStatsButton = document.getElementById('showItemStats');
+    const showChampionAbilitiesButton = document.getElementById('showChampionAbilities');
     const resultCDiv = document.getElementById('resultC');
     const resultItemDiv = document.getElementById('resultItems');
     const itemStatsDisplay = document.getElementById('itemStatsDisplay');
+    const championAbilitiesDisplay = document.getElementById('championAbilitiesDisplay');
     let currentItem = null;
-    let isDetailedViewVisible = false;
+    let currentChampion = null;
+    let isDetailedItemViewVisible = false;
+    let isDetailedChampionViewVisible = false;
 
     fetchChampionButton.addEventListener('click', () => {
         const championName = championNameInput.value.trim();
@@ -26,12 +30,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showItemStatsButton.addEventListener('click', () => {
         if (currentItem) {
-            if (isDetailedViewVisible) {
+            if (isDetailedItemViewVisible) {
                 itemStatsDisplay.innerHTML = ''; // Clear the display
             } else {
                 displayDetailedItemStats(currentItem);
             }
-            isDetailedViewVisible = !isDetailedViewVisible; // Toggle the visibility state
+            isDetailedItemViewVisible = !isDetailedItemViewVisible; // Toggle the visibility state
+        }
+    });
+
+    showChampionAbilitiesButton.addEventListener('click', () => {
+        if (currentChampion) {
+            if (isDetailedChampionViewVisible) {
+                championAbilitiesDisplay.innerHTML = ''; // Clear the display
+            } else {
+                displayChampionAbilities(currentChampion.passive, currentChampion.spells);
+            }
+            isDetailedChampionViewVisible = !isDetailedChampionViewVisible; // Toggle the visibility state
         }
     });
 
@@ -42,7 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error(`Champion ${championName} not found`);
             }
             const data = await response.json();
-            displayChampionStats(data.data[championName]);
+            currentChampion = data.data[championName];
+            isDetailedChampionViewVisible = false; // Reset detailed view visibility
+            championAbilitiesDisplay.innerHTML = ''; // Clear detailed view
+            displayChampionStats(currentChampion);
         } catch (error) {
             resultCDiv.innerHTML = `<p>${error.message}</p>`;
         }
@@ -63,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             currentItem = item;
-            isDetailedViewVisible = false; // Reset detailed view visibility
+            isDetailedItemViewVisible = false; // Reset detailed view visibility
             itemStatsDisplay.innerHTML = ''; // Clear detailed view
             displayItemStats(item);
         } catch (error) {
@@ -137,12 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
                               Total Gold Value Level 1 (without MS and MP): ${totalGoldValueWithoutMSAndMP}`;
 
         resultCDiv.appendChild(champDiv);
-
-        // Fetch and display abilities
-        displayChampionAbilities(champion.passive, champion.spells);
     }
 
     function displayChampionAbilities(passive, abilities) {
+        championAbilitiesDisplay.innerHTML = '';
         let abilitiesDiv = document.createElement('div');
         abilitiesDiv.className = 'abilities';
         abilitiesDiv.innerHTML = '<h2>Abilities</h2>';
@@ -161,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
             abilitiesDiv.appendChild(abilityDiv);
         });
 
-        resultCDiv.appendChild(abilitiesDiv);
+        championAbilitiesDisplay.appendChild(abilitiesDiv);
     }
 
     function displayItemStats(item) {
@@ -178,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
         itemStatsDisplay.innerHTML = '';
         let detailedItemDiv = document.createElement('div');
         detailedItemDiv.className = 'detailed-item';
-        detailedItemDiv.innerHTML = `<p>------------------------------</p>
+        detailedItemDiv.innerHTML = `<p>----------------------------------------------------</p>
                                     <p>Colloquial: ${item.colloq || 'N/A'}</p>
                                     <p>Builds into: ${item.into ? item.into.join(', ') : 'N/A'}</p>
                                     <p>Image: ${item.image ? `<img src="https://ddragon.leagueoflegends.com/cdn/14.12.1/img/item/${item.image.full}" alt="${item.name}">` : 'No image available'}</p>

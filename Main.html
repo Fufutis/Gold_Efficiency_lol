@@ -51,7 +51,7 @@
             <br>
             <input type="text" id="championName" class="champinput" placeholder="Champion Name">
             <button id="fetchChampion" class="black champbutton">Enter Champ</button>
-            <br>
+            <button id="showChampionAbilities" class="black champbutton">Extra</button>
             <div id="champion-stats"></div>
             <br>
             <input type="text" id="itemName" class="iteminput" placeholder="Item Name">
@@ -61,10 +61,14 @@
         </div>
         <div class="flex-item-center">
             <div class="flex-item-center-up" id="resultC">A</div>
-            <div class="flex-item-center-down">B</div>
+            <div class="flex-item-center-down">
+                <div id="championAbilitiesDisplay"></div>
+            </div>
         </div>
         <div class="flex-item-right">
-            <div class="flex-item-right-up" id="resultItems">A</div><!--Ability value -->
+            <div class="flex-item-right-up" id="resultItems">
+                
+            </div><!--Ability value -->
             <div class="flex-item-right-down">
                 <div id="itemStatsDisplay"></div>
             </div><!--Ability scaling with the given stats -->
